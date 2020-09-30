@@ -49,7 +49,7 @@ class ConfirmMembers extends React.Component{
         var i;
         let newState = this.state.representatives 
         for (i = 2; i < this.props.reps.length; i++) {
-            console.log("loop")
+            console.log(this.props.reps[i].photoUrl)
             let mem = {
                 name : this.props.reps[i].name,
                 party : this.props.reps[i].party,
@@ -79,7 +79,7 @@ class ConfirmMembers extends React.Component{
                     <div class="our-team">
                 
                         <div class="picture">
-                        <img class="img-fluid" src={this.state.representatives[i].pic}/>
+                        <img class="img-fluid" src="http://bioguide.congress.gov/bioguide/photo/K/K000384.jpg"/>
                         </div>
                     <div class="team-content">
                         <h3 class="name">{this.state.representatives[i].name}</h3>
