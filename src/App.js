@@ -1,26 +1,47 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import GetMembers from "./GetMembers"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      items: [],
+      loading: false,
+      zip: "",
+      members: []
+    }
+
+
+  }
+
+  componentDidMount(){
+    fetch("https://api.propublica.org/congress/v1/116/senate/members.json",{method: 'GET',
+    headers: {'X-API-Key': 'BtXLIoD8fGmMdVKX1XjUfpNpVPP7eLCXCxngMKJC'}})
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          items: json,
+        })
+        console.log('here')
+        console.log(this.state.items)
+      });
+      
+  }
+
+
+  render(){
+
+
+
+    return(
+      <div>
+        
+        <GetMembers/>
+      </div>
+    )
+  }
 }
 
 export default App;
