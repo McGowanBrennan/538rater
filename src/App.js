@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
 import GetMembers from "./GetMembers"
 
 class App extends React.Component{
@@ -28,6 +27,13 @@ class App extends React.Component{
         console.log(this.state.items)
       });
       
+
+      const script = document.createElement("script");
+
+        script.src = "./js/getLocation.js";
+        script.async = true;
+    
+        document.body.appendChild(script);
   }
 
 

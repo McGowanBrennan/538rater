@@ -1,21 +1,33 @@
 import React from "react"
-
+import './confirmStyle.scss';
 /*
-<div  class="container">
-<div class="row">
-<div class="col-6">
-    <img src = {require(`./photos/${this.state.representatives[i].name}.jpg`)}></img>
-</div>
-<div class="col-sm">
-    <li class="list-group-item">{this.state.representatives[i].name} : {this.state.representatives[i].party} </li>
-</div>
-<div class="col-sm">
-    <button type="button" className = "confirmButtons" value={i} onClick={this.inputOnClick} class="btn btn-outline-primary">remove</button>
-</div>
-</div>
-</div>
+<input id="01" type="checkbox" name="r" value="1" checked>
+  <label for="01">Bread</label>
 */
 
+
+/*
+
+<div className="container1">
+                <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="our-team">
+                
+                        <div class="picture">
+                        <img class="img-fluid" src={this.state.representatives[i].pic}/>
+                        </div>
+                    <div class="team-content">
+                        <h3 class="name">{this.state.representatives[i].name}</h3>
+                        <h4 class="title">{this.state.representatives[i].party}</h4>
+                        <button type="button" className = "confirmButtons" value={i} onClick={this.inputOnClick} class="btn btn-outline-primary">remove</button>
+                    </div>
+                    
+                    </div>
+                </div>
+                </div>
+            </div>
+
+*/
 
 class ConfirmMembers extends React.Component{
     constructor(){
@@ -72,27 +84,12 @@ class ConfirmMembers extends React.Component{
         for (i = 1; i < this.state.representatives.length; i++) {
             
             displayElements1.push(
-            
-            <div className="container1">
-                <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="our-team">
-                
-                        <div class="picture">
-                        <img class="img-fluid" src="http://bioguide.congress.gov/bioguide/photo/K/K000384.jpg"/>
-                        </div>
-                    <div class="team-content">
-                        <h3 class="name">{this.state.representatives[i].name}</h3>
-                        <h4 class="title">{this.state.representatives[i].party}</h4>
-                        <button type="button" className = "confirmButtons" value={i} onClick={this.inputOnClick} class="btn btn-outline-primary">remove</button>
-                    </div>
-                    
-                    </div>
+                <div class="box">                
+                <input id={i} type="checkbox"/>
+                <span class="check"></span>
+                <label for={i}>{this.state.representatives[i].name + ", " + this.state.representatives[i].party.slice(0,1)}</label>
                 </div>
-                </div>
-            </div>
 
-            
             )
             }
 
@@ -106,15 +103,10 @@ class ConfirmMembers extends React.Component{
     render(){
        
         return(
-            <div className = "confirmBackground">
-
-
-                Confirm your representatives:
-                <div className = "repsDiv">
+            <div className = "confirmText">
+                Confirm your representatives
                 {this.state.displayElements}
-                </div>
-                
-  
+                <div class="x"><button class="btn btn"  backgroundColor="#00EA90"type="submit">Confirm </button></div>
             </div>
             
         )
