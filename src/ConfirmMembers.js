@@ -44,10 +44,7 @@ class ConfirmMembers extends React.Component{
     }
 
     inputOnClick(e){
-        console.log("click")
         let index = e.target.value
-        console.log(index)
-        console.log(this.state.displayElements)
         const newList = this.state.displayElements
         delete newList[index-1]
         this.setState({

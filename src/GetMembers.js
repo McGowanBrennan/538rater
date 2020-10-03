@@ -2,33 +2,6 @@ import React from "react"
 import ConfirmMembers from "./ConfirmMembers"
 
 
-
-
-/*
-<div>
-                
-                <div class="newsletter-subscribe">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center">Enter your zipcode to find your representatives.</h2>
-                
-            </div>
-            <form class="form-inline" method="post">
-                <div class="form-group"><input class="form-control"  name="zipcode" value={this.state.zipcode} placeholder="zipcode" onChange={this.handleChange}/></div>
-                <div class="form-group"><button class="btn btn-primary" onClick = {this.getZip} type="submit">OK </button></div>
-            </form>
-            <div className="logo">538rater.com™</div>
-        </div>
-        
-    </div>
-
-                    
-            
-            </div>
-
-*/
-
-
 class GetMembers extends React.Component{
     constructor(){
         super()
@@ -49,9 +22,18 @@ class GetMembers extends React.Component{
      }
 
     getZip(){
-        this.setState({ isLoading: true });
-        
-        let url = "https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=" + this.state.zipcode + "&includeOffices=true&levels=country&key=AIzaSyA7yKG6JKgpgrRrQho_kBx4kxaP9sX1bD4"
+        let newState = document.querySelector('#address-value').textContent
+        this.setState({ 
+            isLoading: true,
+            zipcode: newState
+        });
+        console.log(newState)
+        let parseThis = newState
+        let strLen = newState.length
+        let start = strLen-26
+        let parsedZip = parseThis.slice(0, start)
+        console.log(parsedZip)
+        let url = "https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=" + parsedZip + "&includeOffices=true&levels=country&key=AIzaSyA7yKG6JKgpgrRrQho_kBx4kxaP9sX1bD4"
         console.log(url)
         fetch(url)
       .then(res => res.json())
@@ -111,6 +93,7 @@ class GetMembers extends React.Component{
         <div class="form-group">
       
             <input id="zipcode" value={this.state.zipcode} placeholder="address" onChange={this.handleChange} />
+            <p>Selected: <strong id="address-value">none</strong></p>
             </div>              
 
             
