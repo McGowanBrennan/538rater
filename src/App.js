@@ -28,12 +28,7 @@ class App extends React.Component{
       });
       
 
-      const script = document.createElement("script");
-
-        script.src = "./js/getLocation.js";
-        script.async = true;
     
-        document.body.appendChild(script);
   }
 
 
