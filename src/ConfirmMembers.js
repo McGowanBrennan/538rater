@@ -1,45 +1,19 @@
 import React from "react"
-import './confirmStyle.scss';
-/*
-<input id="01" type="checkbox" name="r" value="1" checked>
-  <label for="01">Bread</label>
-*/
+import './sass/confirmStyle.scss';
+import Ratings from "./Ratings.js"
 
-
-/*
-
-<div className="container1">
-                <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="our-team">
-                
-                        <div class="picture">
-                        <img class="img-fluid" src={this.state.representatives[i].pic}/>
-                        </div>
-                    <div class="team-content">
-                        <h3 class="name">{this.state.representatives[i].name}</h3>
-                        <h4 class="title">{this.state.representatives[i].party}</h4>
-                        <button type="button" className = "confirmButtons" value={i} onClick={this.inputOnClick} class="btn btn-outline-primary">remove</button>
-                    </div>
-                    
-                    </div>
-                </div>
-                </div>
-            </div>
-
-*/
 
 class ConfirmMembers extends React.Component{
     constructor(){
         super()
         this.state = {
-            representatives: [
-                { name: "head", party: "", isActive: false, index: 0, pic:"" },
-            ],
+            representatives: [],
 
-            displayElements: []
+            displayElements: [],
+            confirmed: false
         }
         this.inputOnClick = this.inputOnClick.bind(this)
+        this.confirmReps = this.confirmReps.bind(this)
        
     }
 
@@ -52,9 +26,14 @@ class ConfirmMembers extends React.Component{
         })
       }
 
+    confirmReps(){
+        this.setState({
+            confirmed: true
+        })
+    }
+
    
     componentDidMount(){
-        console.log(this.props.reps.officials)
         var i;
         let newState = this.state.representatives 
         for (i = 2; i < this.props.reps.length; i++) {
@@ -78,7 +57,7 @@ class ConfirmMembers extends React.Component{
         
         
         
-        for (i = 1; i < this.state.representatives.length; i++) {
+        for (i = 0; i < this.state.representatives.length; i++) {
             
             displayElements1.push(
                 <div class="box">                
@@ -98,12 +77,23 @@ class ConfirmMembers extends React.Component{
     }
 
     render(){
-       
+        const { confirmed} = this.state;
+        if(confirmed) {
+            console.log(this.state.representatives)
+            return(
+
+                <div>
+                    <Ratings reps={this.state.representatives}/>
+                </div>
+
+            )
+        }
+
         return(
             <div className = "confirmText">
                 Confirm your representatives
                 {this.state.displayElements}
-                <div class="x"><button class="btn btn"  backgroundColor="#00EA90"type="submit">Confirm </button></div>
+                <div class="x"><button class="btn btn" onClick = {this.confirmReps} backgroundColor="#00EA90"type="submit">Confirm </button></div>
             </div>
             
         )

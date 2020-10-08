@@ -18,7 +18,6 @@ class GetMembers extends React.Component{
     handleChange = (e) => {
         e.preventDefault();
         this.setState({[e.target.id]:e.target.value})
-        console.log(this.state.zipcode)
      }
 
     getZip(){
@@ -27,18 +26,17 @@ class GetMembers extends React.Component{
             isLoading: true,
             zipcode: newState
         });
-        console.log(newState)
         let parseThis = newState
         let strLen = newState.length
         let start = strLen-26
         let parsedZip = parseThis.slice(0, start)
-        console.log(parsedZip)
         let url = "https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=" + parsedZip + "&includeOffices=true&levels=country&key=AIzaSyA7yKG6JKgpgrRrQho_kBx4kxaP9sX1bD4"
-        console.log(url)
         fetch(url)
       .then(res => res.json())
       .then(json => {
+          console.log(json)
         this.setState({
+            
           reps: json,
           isLoading: false,
           isRendered: false
@@ -47,19 +45,15 @@ class GetMembers extends React.Component{
         )
       })
       
-
-      console.log(this.state.zipcode)
-      console.log(this.state.reps)
-      console.log(this.state.display)
-      
     }
 
     componentDidMount(){
+        console.log("here")
         var aScript = document.createElement('script');
         aScript.type = 'text/javascript';
         aScript.src = "./getLocation.js ";
-    
         document.head.appendChild(aScript); 
+        
     }
     render(){
 
