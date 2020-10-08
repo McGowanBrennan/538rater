@@ -1,32 +1,5 @@
 import React from "react";
-import "./confirmStyle.scss";
-/*
-<input id="01" type="checkbox" name="r" value="1" checked>
-  <label for="01">Bread</label>
-*/
-
-/*
-
-<div className="container1">
-                <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="our-team">
-                
-                        <div class="picture">
-                        <img class="img-fluid" src={this.state.representatives[i].pic}/>
-                        </div>
-                    <div class="team-content">
-                        <h3 class="name">{this.state.representatives[i].name}</h3>
-                        <h4 class="title">{this.state.representatives[i].party}</h4>
-                        <button type="button" className = "confirmButtons" value={i} onClick={this.inputOnClick} class="btn btn-outline-primary">remove</button>
-                    </div>
-                    
-                    </div>
-                </div>
-                </div>
-            </div>
-
-*/
+import "../styles/confirmStyle.css";
 
 class ConfirmMembers extends React.Component {
   constructor() {

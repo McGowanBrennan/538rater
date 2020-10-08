@@ -1,6 +1,6 @@
 import React from "react";
 
-import GetMembers from "./GetMembers";
+import GetMembers from "./partials/GetMembers";
 
 class App extends React.Component {
   constructor() {
