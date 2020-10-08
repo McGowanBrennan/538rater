@@ -1,47 +1,38 @@
-import React from 'react';
+import React from "react";
 
-import GetMembers from "./GetMembers"
+import GetMembers from "./GetMembers";
 
-class App extends React.Component{
-  constructor(){
-    super()
+class App extends React.Component {
+  constructor() {
+    super();
     this.state = {
       items: [],
       loading: false,
       zip: "",
-      members: []
-    }
-
-
+      members: [],
+    };
   }
-
-  componentDidMount(){
-    fetch("https://api.propublica.org/congress/v1/116/senate/members.json",{method: 'GET',
-    headers: {'X-API-Key': 'BtXLIoD8fGmMdVKX1XjUfpNpVPP7eLCXCxngMKJC'}})
-      .then(res => res.json())
-      .then(json => {
+  componentDidMount() {
+    fetch("https://api.propublica.org/congress/v1/116/senate/members.json", {
+      method: "GET",
+      headers: { "X-API-Key": "BtXLIoD8fGmMdVKX1XjUfpNpVPP7eLCXCxngMKJC" },
+    })
+      .then((res) => res.json())
+      .then((json) => {
         this.setState({
           items: json,
-        })
-        console.log('here')
-        console.log(this.state.items)
+        });
+        console.log("here");
+        console.log(this.state.items);
       });
-      
-
-    
   }
 
-
-  render(){
-
-
-
-    return(
+  render() {
+    return (
       <div>
-        
-        <GetMembers/>
+        <GetMembers />
       </div>
-    )
+    );
   }
 }
 
