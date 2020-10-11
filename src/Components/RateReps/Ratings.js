@@ -49,6 +49,10 @@ class Ratings extends React.Component{
                   Environmental: 0,
                   Social: 0
                   })
+
+                firebase.firestore().collection("AllReps").doc().set({
+                    name: person.name
+                    })
           
               }
             

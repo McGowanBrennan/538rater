@@ -1,6 +1,6 @@
 import React from "react"
-import './sass/confirmStyle.scss';
-import Ratings from "./Ratings.js"
+import './confirmStyle.scss';
+import Ratings from "../RateReps/Ratings.js"
 
 
 class ConfirmMembers extends React.Component{

@@ -1,7 +1,8 @@
 import React from "react"
 
-import GetMembers from "./Componenets/SearchReps/GetMembers.js"
-import "./Sass/homeScreen.scss"
+import GetMembers from "../SearchReps/GetMembers.js"
+import ListMembers from "../DisplayRankings/ListMembers.js"
+import "./homeScreen.scss"
 
 class LandingPage extends React.Component{
   constructor(){
@@ -40,7 +41,7 @@ class LandingPage extends React.Component{
 
     if(this.state.viewRating){
       return(
-        <GetMembers />
+        <ListMembers />
         )
     }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import ConfirmMembers from "./ConfirmMembers"
+import ConfirmMembers from "../ConfirmReps/ConfirmMembers.js"
 
 
 class GetMembers extends React.Component{

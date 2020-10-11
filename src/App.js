@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LandingPage from "./Components/LandingPage/LandingPage.js"
-import "./sass/homeScreen.scss"
+
 
 
 class App extends React.Component{
